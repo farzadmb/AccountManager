@@ -1,18 +1,17 @@
-﻿using AccountManager.Data.DbHandlers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 using AccountManager.Application.DTOs;
 using AccountManager.Application.Extensions;
+using AccountManager.Data.DbHandlers;
 
 namespace AccountManager.Application
 {
     /// <summary>
     /// The implementation for <see cref="IUserService"/>
     /// </summary>
-    public class UserServices : IUserService
+    public class UserService : IUserService
     {
         #region Fields
 
@@ -22,7 +21,7 @@ namespace AccountManager.Application
 
         #region Constructor
 
-        public UserServices(IUserDbHandler userDbHandler)
+        public UserService(IUserDbHandler userDbHandler)
         {
             this.userDbHandler = userDbHandler;
         }
@@ -31,14 +30,16 @@ namespace AccountManager.Application
 
         #region Public Methods
 
-        public IEnumerable<UserDto> GetAllUsers()
+        public async Task<IEnumerable<UserDto>> GetAllUsersAsync()
         {
-            return userDbHandler.GetUsers().ToUserDto();
+            var users = await userDbHandler.GetUsersAsync();
+            return users.ToUserDto();
         }
 
-        public UserDto GetUser(string email)
+        public async Task<UserDto> GetUserAsync(string email)
         {
-            return userDbHandler.GetUsers().FirstOrDefault(u => u.Email == email).ToUserDto();
+            var users = await userDbHandler.GetUsersAsync();
+            return users.FirstOrDefault(u => u.Email == email).ToUserDto();
         }
 
         public async Task AddUser(UserDto user)
