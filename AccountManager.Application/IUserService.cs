@@ -15,7 +15,7 @@ namespace AccountManager.Application
         /// <returns>
         /// The list of <see cref="UserDto"/>
         /// </returns>
-        IEnumerable<UserDto> GetAllUsers();
+        Task<IEnumerable<UserDto>> GetAllUsersAsync();
 
         /// <summary>
         /// Returns a user
@@ -26,7 +26,7 @@ namespace AccountManager.Application
         /// <returns>
         /// The <see cref="UserDto"/>
         /// </returns>
-        UserDto GetUser(string email);
+        Task<UserDto> GetUserAsync(string email);
 
         /// <summary>
         /// Adds the given user to the database

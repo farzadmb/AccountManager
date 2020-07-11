@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AccountManager.Data.DbContexts;
 using AccountManager.Data.Models;
@@ -33,9 +34,9 @@ namespace AccountManager.Data.DbHandlers
 
         #region Public methods
 
-        public IEnumerable<User> GetUsers()
+        public async Task<IEnumerable<User>> GetUsersAsync()
         {
-            return dbContext.Users;
+            return await Task.FromResult(dbContext.Users);
         }
 
         public async Task AddUserAsync(User user)

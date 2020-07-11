@@ -17,7 +17,7 @@ namespace AccountManager.Data.DbHandlers
         /// <returns>
         /// The list of <see cref="User"/>
         /// </returns>
-        IEnumerable<User> GetUsers();
+        Task<IEnumerable<User>> GetUsersAsync();
 
         /// <summary>
         /// Adds the given user to the database
