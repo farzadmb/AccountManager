@@ -12,7 +12,7 @@ namespace AccountManager.Data.Maps
         #region Constructor
 
         /// <summary>
-        /// The default constructor
+        /// Initializes a new instance of the <see cref="AccountMap"/> class.
         /// </summary>
         /// <param name="entityBuilder">
         /// The entity builder

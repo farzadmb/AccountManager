@@ -1,8 +1,8 @@
-﻿using AccountManager.Data.DbContexts;
-using AccountManager.Data.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AccountManager.Data.DbContexts;
+using AccountManager.Data.Models;
 
 namespace AccountManager.Data.DbHandlers
 {
@@ -20,7 +20,7 @@ namespace AccountManager.Data.DbHandlers
         #region Constructor
 
         /// <summary>
-        /// The default constructor
+        /// Initializes a new instance of the <see cref="AccountDbHandler"/> class.
         /// </summary>
         /// <param name="sqliteDbContext">
         /// The dbContext

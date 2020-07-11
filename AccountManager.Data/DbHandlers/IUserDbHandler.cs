@@ -15,31 +15,9 @@ namespace AccountManager.Data.DbHandlers
         /// Returns the list of all users
         /// </summary>
         /// <returns>
-        /// The lsit of <see cref="User"/>
+        /// The list of <see cref="User"/>
         /// </returns>
         IEnumerable<User> GetUsers();
-
-        /// <summary>
-        /// Returns a user
-        /// </summary>
-        /// <param name="userId">
-        /// The Id of the user
-        /// </param>
-        /// <returns>
-        /// The <see cref="User"/>
-        /// </returns>
-        User GetUser(int userId);
-
-        /// <summary>
-        /// Returns a user
-        /// </summary>
-        /// <param name="email">
-        /// The email of the user
-        /// </param>
-        /// <returns>
-        /// The <see cref="User"/>
-        /// </returns>
-        User GetUser(string email);
 
         /// <summary>
         /// Adds the given user to the database

@@ -1,8 +1,7 @@
-﻿using AccountManager.Data.DbContexts;
-using AccountManager.Data.Models;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using AccountManager.Data.DbContexts;
+using AccountManager.Data.Models;
 
 namespace AccountManager.Data.DbHandlers
 {
@@ -20,7 +19,7 @@ namespace AccountManager.Data.DbHandlers
         #region Constructor
 
         /// <summary>
-        /// The default constructor
+        /// Initializes a new instance of the <see cref="UserDbHandler"/> class.
         /// </summary>
         /// <param name="sqliteDbContext">
         /// The dbContext
@@ -37,16 +36,6 @@ namespace AccountManager.Data.DbHandlers
         public IEnumerable<User> GetUsers()
         {
             return dbContext.Users;
-        }
-
-        public User GetUser(int userId)
-        {
-            return dbContext.Users.FirstOrDefault(u => u.Id == userId);
-        }
-
-        public User GetUser(string email)
-        {
-            return dbContext.Users.FirstOrDefault(u => u.Email == email);
         }
 
         public async Task AddUserAsync(User user)
