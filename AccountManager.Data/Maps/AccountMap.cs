@@ -26,7 +26,7 @@ namespace AccountManager.Data.Maps
             entityBuilder.Property(a => a.CreationDate).HasColumnName("date");
             entityBuilder.Property(a => a.IsActive).HasColumnName("isActive");
 
-            entityBuilder.HasOne(a => a.User).WithMany(u => u.Accounts).HasForeignKey(a => a.Id);
+            entityBuilder.HasOne(a => a.User).WithMany(u => u.Accounts).HasForeignKey(a => a.UserId);
         }
 
         #endregion

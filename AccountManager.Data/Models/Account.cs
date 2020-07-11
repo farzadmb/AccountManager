@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace AccountManager.Data.Models
@@ -30,6 +31,9 @@ namespace AccountManager.Data.Models
         /// Gets or sets a value indicating whether the account is active
         /// </summary>
         public bool IsActive { get; set; }
+
+        [ForeignKey("User")]
+        public uint UserId { get; set; }
 
         #endregion
     }
