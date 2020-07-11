@@ -19,14 +19,16 @@ namespace AccountManager.Data.Maps
         /// </param>
         public UserMap(EntityTypeBuilder<User> entityBuilder)
         {
-            entityBuilder.HasKey(a => a.Id);
+            entityBuilder.HasKey(u => u.Id);
             entityBuilder.ToTable("user");
 
-            entityBuilder.Property(a => a.Id).HasColumnName("id");
-            entityBuilder.Property(a => a.Name).IsRequired().HasColumnName("name");
-            entityBuilder.Property(a => a.Email).IsRequired().HasColumnName("email");
-            entityBuilder.Property(a => a.Salary).HasColumnName("salary");
-            entityBuilder.Property(a => a.Expenses).HasColumnName("expenses");
+            entityBuilder.Property(u => u.Id).HasColumnName("id");
+            entityBuilder.Property(u => u.Name).IsRequired().HasColumnName("name");
+            entityBuilder.Property(u => u.Email).IsRequired().HasColumnName("email");
+            entityBuilder.Property(u => u.Salary).HasColumnName("salary");
+            entityBuilder.Property(u => u.Expenses).HasColumnName("expenses");
+
+            entityBuilder.HasMany(u => u.Accounts).WithOne(a => a.User);
         }
 
         #endregion
