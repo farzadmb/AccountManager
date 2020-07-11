@@ -19,7 +19,7 @@ namespace AccountManager.Data.Models
         /// <summary>
         /// Gets or sets the Id of the user
         /// </summary>
-        public uint UserId { get; set; }
+        public User User { get; set; }
 
         /// <summary>
         /// Gets or sets the creation date

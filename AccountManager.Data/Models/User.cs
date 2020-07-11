@@ -1,4 +1,6 @@
-﻿namespace AccountManager.Data.Models
+﻿using System.Collections.Generic;
+
+namespace AccountManager.Data.Models
 {
     /// <summary>
     /// The User model
@@ -31,6 +33,11 @@
         /// Gets or sets the expenses of the user
         /// </summary>
         public uint Expenses { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of accounts
+        /// </summary>
+        public IEnumerable<Account> Accounts { get; set; }
 
         #endregion
     }
