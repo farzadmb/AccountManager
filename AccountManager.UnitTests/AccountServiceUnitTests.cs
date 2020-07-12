@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
 using AccountManager.Application;
 using AccountManager.Application.DTOs;
 using AccountManager.Application.Exceptions;
 using AccountManager.Application.Requests;
 using AccountManager.Data.DbHandlers;
 using AccountManager.Data.Models;
-
 using Moq;
-
 using Xunit;
 
 namespace AccountManager.UnitTests

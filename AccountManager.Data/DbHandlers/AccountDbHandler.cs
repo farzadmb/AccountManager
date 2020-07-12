@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using AccountManager.Data.DbContexts;
 using AccountManager.Data.Models;
-
 using Microsoft.EntityFrameworkCore;
 
 namespace AccountManager.Data.DbHandlers
@@ -38,7 +37,7 @@ namespace AccountManager.Data.DbHandlers
 
         public async Task<IEnumerable<Account>> GetAccountsAsync()
         {
-            return await Task.FromResult(dbContext.Accounts.Where(a => a.IsActive));
+            return await Task.FromResult(dbContext.Accounts.Include("User").Where(a => a.IsActive));
         }
 
         public async Task<IEnumerable<Account>> GetUserAccountsAsync(int userId)
@@ -48,7 +47,7 @@ namespace AccountManager.Data.DbHandlers
 
         public async Task<Account> GetAccountAsync(int id)
         {
-            return await Task.FromResult(dbContext.Accounts.FirstOrDefault(a => a.Id == id && a.IsActive));
+            return await Task.FromResult(dbContext.Accounts.Include("User").FirstOrDefault(a => a.Id == id && a.IsActive));
         }
 
         public async Task AddAccountAsync(Account account)

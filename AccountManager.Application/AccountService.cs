@@ -76,7 +76,7 @@ namespace AccountManager.Application
                 throw new UserIsNotEligibleToCreateAccountException();
             }
 
-            var account = new Account() { UserId = request.UserId, CreationDate = DateTime.UtcNow };
+            var account = new Account() { UserId = request.UserId, CreationDate = DateTime.UtcNow, IsActive = true };
             await accountDbHandler.AddAccountAsync(account);
         }
 

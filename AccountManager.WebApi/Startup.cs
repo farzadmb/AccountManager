@@ -25,6 +25,7 @@ namespace AccountManager.WebApi
             services.AddControllers();
 
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IUserDbHandler, UserDbHandler>();
             services.AddScoped<IAccountDbHandler, AccountDbHandler>();
 
