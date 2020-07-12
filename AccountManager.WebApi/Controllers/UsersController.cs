@@ -1,5 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using AccountManager.Application;
+using AccountManager.Application.Requests;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace AccountManager.WebApi.Controllers
@@ -29,6 +32,38 @@ namespace AccountManager.WebApi.Controllers
         public async Task<IActionResult> GetAllUsers()
         {
             return Ok(await userService.GetAllUsersAsync());
+        }
+
+        [HttpGet]
+        [Route("{email}")]
+        public async Task<IActionResult> GetUser(string email)
+        {
+            var user = await userService.GetUserAsync(email);
+
+            if (user == null)
+            {
+                return BadRequest($"User with email {email} is not found");
+            }
+
+            return Ok(user);
+        }
+
+        #endregion
+
+        #region Post
+
+        [HttpPost]
+        public async Task<IActionResult> AddUser(AddUserRequest request)
+        {
+            try
+            {
+                await userService.AddUserAsync(request);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         #endregion
