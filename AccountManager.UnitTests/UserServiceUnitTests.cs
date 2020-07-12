@@ -130,6 +130,7 @@ namespace AccountManager.UnitTests
             yield return new object[] { requests[4], typeof(NegativeParameterException) };
             yield return new object[] { requests[5], typeof(NegativeParameterException) };
         }
+
         #endregion
     }
 }

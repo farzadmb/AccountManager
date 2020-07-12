@@ -27,6 +27,8 @@ namespace AccountManager.WebApi
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserDbHandler, UserDbHandler>();
             services.AddScoped<IAccountDbHandler, AccountDbHandler>();
+
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +47,13 @@ namespace AccountManager.WebApi
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Account Manager");
+                });
         }
     }
 }
