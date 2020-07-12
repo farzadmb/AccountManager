@@ -4,7 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using AccountManager.Application.DTOs;
 using AccountManager.Application.Extensions;
+using AccountManager.Application.Requests;
+using AccountManager.Application.Requests.Validation;
 using AccountManager.Data.DbHandlers;
+using AccountManager.Data.Models;
 
 namespace AccountManager.Application
 {
@@ -42,14 +45,20 @@ namespace AccountManager.Application
             return users.FirstOrDefault(u => u.Email == email).ToUserDto();
         }
 
-        public async Task AddUser(UserDto user)
+        public async Task AddUser(AddUserRequest request)
         {
-            if (user == null)
-            {
-                throw new Exception();
-            }
+            var validator = new AddUserRequestValidation(request);
+            validator.Validate();
 
-            await userDbHandler.AddUserAsync(user.ToUser());
+            var user = new User()
+                           {
+                               Name = request.Name,
+                               Email = request.Email,
+                               Salary = (uint) request.Salary,
+                               Expenses = (uint) request.Expenses
+                           };
+
+            await userDbHandler.AddUserAsync(user);
         }
 
         #endregion
