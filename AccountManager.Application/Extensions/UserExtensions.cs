@@ -49,7 +49,7 @@ namespace AccountManager.Application.Extensions
         /// </returns>
         public static IEnumerable<UserDto> ToUserDto(this IEnumerable<User> users)
         {
-            return users?.Select(u => u.ToUserDto());
+            return users?.Select(u => u.ToUserDto()) ?? Enumerable.Empty<UserDto>();
         }
 
         #endregion

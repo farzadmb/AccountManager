@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using AccountManager.Application;
 using AccountManager.Application.Requests;
-
 using Microsoft.AspNetCore.Mvc;
 
 namespace AccountManager.WebApi.Controllers

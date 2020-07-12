@@ -15,7 +15,7 @@ namespace AccountManager.Data.DbHandlers
         /// <returns>
         /// The list of <see cref="Account"/>
         /// </returns>
-        IEnumerable<Account> GetAccounts();
+        Task<IEnumerable<Account>> GetAccountsAsync();
 
         /// <summary>
         /// Return an account based on Id
@@ -26,7 +26,7 @@ namespace AccountManager.Data.DbHandlers
         /// <returns>
         /// The account
         /// </returns>
-        Account GetAccount(int id);
+        Task<Account> GetAccountAsync(int id);
 
         /// <summary>
         /// The accounts of a user
@@ -37,7 +37,7 @@ namespace AccountManager.Data.DbHandlers
         /// <returns>
         /// The list of <see cref="Account"/>
         /// </returns>
-        IEnumerable<Account> GetUserAccounts(int userId);
+        Task<IEnumerable<Account>> GetUserAccountsAsync(int userId);
 
         /// <summary>
         /// Adds an account
@@ -47,6 +47,6 @@ namespace AccountManager.Data.DbHandlers
         /// </param>
         /// <returns>
         /// </returns>
-        Task AddAccount(Account account);
+        Task AddAccountAsync(Account account);
     }
 }

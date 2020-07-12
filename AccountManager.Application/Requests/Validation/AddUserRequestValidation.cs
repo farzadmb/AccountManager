@@ -1,5 +1,4 @@
 ﻿using System;
-
 using AccountManager.Application.Exceptions;
 
 namespace AccountManager.Application.Requests.Validation
@@ -23,6 +22,9 @@ namespace AccountManager.Application.Requests.Validation
         }
 
         #endregion
+
+        #region Validation
+
         public void Validate()
         {
             if (request == null)
@@ -50,5 +52,7 @@ namespace AccountManager.Application.Requests.Validation
                 throw new NegativeParameterException(nameof(this.request.Expenses));
             }
         }
+
+        #endregion
     }
 }
