@@ -23,6 +23,7 @@ namespace AccountManager.Data.Maps
             entityBuilder.ToTable("account");
 
             entityBuilder.Property(a => a.Id).HasColumnName("id");
+            entityBuilder.Property(a => a.UserId).HasColumnName("userId");
             entityBuilder.Property(a => a.CreationDate).HasColumnName("date");
             entityBuilder.Property(a => a.IsActive).HasColumnName("isActive");
 
