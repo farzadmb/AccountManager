@@ -37,6 +37,6 @@ namespace AccountManager.Application
         /// </param>
         /// <returns>
         /// </returns>
-        Task AddUser(AddUserRequest request);
+        Task AddUserAsync(AddUserRequest request);
     }
 }

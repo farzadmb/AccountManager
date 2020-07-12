@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AccountManager.Application.DTOs;
+using AccountManager.Application.Exceptions;
 using AccountManager.Application.Extensions;
 using AccountManager.Application.Requests;
 using AccountManager.Application.Requests.Validation;
@@ -45,10 +46,19 @@ namespace AccountManager.Application
             return users.FirstOrDefault(u => u.Email == email).ToUserDto();
         }
 
-        public async Task AddUser(AddUserRequest request)
+        public async Task AddUserAsync(AddUserRequest request)
         {
             var validator = new AddUserRequestValidation(request);
             validator.Validate();
+
+            var existingUsers = await userDbHandler.GetUsersAsync();
+            var existingUser = existingUsers.FirstOrDefault(
+                u => string.Equals(request.Email, u.Email, StringComparison.InvariantCultureIgnoreCase));
+
+            if (existingUser != null)
+            {
+                throw new DuplicateEmailException(request.Email);
+            }
 
             var user = new User()
                            {
