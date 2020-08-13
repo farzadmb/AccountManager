@@ -20,8 +20,9 @@ namespace AccountManager.Data.Maps
         public UserMap(EntityTypeBuilder<User> entityBuilder)
         {
             entityBuilder.HasKey(u => u.Id);
-            entityBuilder.ToTable("user");
+            entityBuilder.HasIndex(u => u.Email).IsUnique();
 
+            entityBuilder.ToTable("user");
             entityBuilder.Property(u => u.Id).HasColumnName("id");
             entityBuilder.Property(u => u.Name).IsRequired().HasColumnName("name");
             entityBuilder.Property(u => u.Email).IsRequired().HasColumnName("email");

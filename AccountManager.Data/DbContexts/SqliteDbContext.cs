@@ -46,12 +46,6 @@ namespace AccountManager.Data.DbContexts
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<User>(entity =>
-            {
-                entity.HasIndex(e => e.Email).IsUnique();
-            });
-
-
             new UserMap(modelBuilder.Entity<User>());
             new AccountMap(modelBuilder.Entity<Account>());
 
