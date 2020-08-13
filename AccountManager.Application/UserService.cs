@@ -48,9 +48,6 @@ namespace AccountManager.Application
 
         public async Task AddUserAsync(AddUserRequest request)
         {
-            var validator = new AddUserRequestValidation(request);
-            validator.Validate();
-
             var existingUsers = await userDbHandler.GetUsersAsync();
             var existingUser = existingUsers.FirstOrDefault(
                 u => string.Equals(request.Email, u.Email, StringComparison.InvariantCultureIgnoreCase));

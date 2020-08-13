@@ -41,7 +41,7 @@ namespace AccountManager.WebApi.Controllers
 
             if (user == null)
             {
-                return BadRequest($"User with email {email} is not found");
+                return NotFound($"User with email {email} is not found");
             }
 
             return Ok(user);
@@ -54,15 +54,14 @@ namespace AccountManager.WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> AddUser(AddUserRequest request)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                await userService.AddUserAsync(request);
-                return Ok();
+                return BadRequest(ModelState.ValidationState);
             }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+
+            await userService.AddUserAsync(request);
+            return Ok();
+
         }
 
         #endregion
