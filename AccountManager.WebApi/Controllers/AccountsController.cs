@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AccountManager.Application;
+using AccountManager.Application.Exceptions;
 using AccountManager.Application.Requests;
 using Microsoft.AspNetCore.Mvc;
 
@@ -55,10 +56,19 @@ namespace AccountManager.WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAccount(AddAccountRequest request)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState.ValidationState);
+            }
+
             try
             {
-                await this.accountService.AddAccountAsync(request);
+                await accountService.AddAccountAsync(request);
                 return Ok();
+            }
+            catch (UserNotFountException ex)
+            {
+                return NotFound(ex.Message);
             }
             catch (Exception e)
             {

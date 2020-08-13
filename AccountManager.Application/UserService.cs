@@ -6,7 +6,6 @@ using AccountManager.Application.DTOs;
 using AccountManager.Application.Exceptions;
 using AccountManager.Application.Extensions;
 using AccountManager.Application.Requests;
-using AccountManager.Application.Requests.Validation;
 using AccountManager.Data.DbHandlers;
 using AccountManager.Data.Models;
 

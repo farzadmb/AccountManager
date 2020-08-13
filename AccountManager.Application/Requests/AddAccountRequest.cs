@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace AccountManager.Application.Requests
 {
@@ -12,6 +10,7 @@ namespace AccountManager.Application.Requests
         /// <summary>
         /// Gets or sets the Id of the owner
         /// </summary>
+        [Required(ErrorMessage = "UserId is required")]
         public uint UserId { get; set; }
     }
 }

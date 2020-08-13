@@ -6,7 +6,6 @@ using AccountManager.Application.DTOs;
 using AccountManager.Application.Exceptions;
 using AccountManager.Application.Extensions;
 using AccountManager.Application.Requests;
-using AccountManager.Application.Requests.Validation;
 using AccountManager.Data.DbHandlers;
 using AccountManager.Data.Models;
 
@@ -60,9 +59,6 @@ namespace AccountManager.Application
 
         public async Task AddAccountAsync(AddAccountRequest request)
         {
-            var validator = new AddAccountRequestValidation(request);
-            validator.Validate();
-
             var users = await userDbHandler.GetUsersAsync();
             var user = users.FirstOrDefault(u => u.Id == request.UserId);
 
